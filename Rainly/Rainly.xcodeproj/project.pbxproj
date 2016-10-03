@@ -12,6 +12,8 @@
 		97F14FEE1CB9EEB20065EE08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F14FEC1CB9EEB20065EE08 /* Main.storyboard */; };
 		97F14FF01CB9EEB20065EE08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97F14FEF1CB9EEB20065EE08 /* Assets.xcassets */; };
 		97F14FF31CB9EEB20065EE08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F14FF11CB9EEB20065EE08 /* LaunchScreen.storyboard */; };
+		A29213CE1DA21D1F00335E1C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213CD1DA21D1F00335E1C /* CurrentWeather.swift */; };
+		A29213D11DA21E6500335E1C /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213D01DA21E6500335E1C /* WeatherIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		97F14FEF1CB9EEB20065EE08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97F14FF21CB9EEB20065EE08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97F14FF41CB9EEB20065EE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A29213CD1DA21D1F00335E1C /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
+		A29213D01DA21E6500335E1C /* WeatherIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +60,22 @@
 			children = (
 				97F14FE81CB9EEB20065EE08 /* AppDelegate.swift */,
 				97F14FEA1CB9EEB20065EE08 /* ViewController.swift */,
+				A29213CF1DA21E3800335E1C /* WeatherModel */,
 				97F14FEC1CB9EEB20065EE08 /* Main.storyboard */,
 				97F14FEF1CB9EEB20065EE08 /* Assets.xcassets */,
 				97F14FF11CB9EEB20065EE08 /* LaunchScreen.storyboard */,
 				97F14FF41CB9EEB20065EE08 /* Info.plist */,
 			);
 			path = Rainly;
+			sourceTree = "<group>";
+		};
+		A29213CF1DA21E3800335E1C /* WeatherModel */ = {
+			isa = PBXGroup;
+			children = (
+				A29213CD1DA21D1F00335E1C /* CurrentWeather.swift */,
+				A29213D01DA21E6500335E1C /* WeatherIcon.swift */,
+			);
+			name = WeatherModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,7 +106,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = Treehouse;
+				ORGANIZATIONNAME = Leteyski;
 				TargetAttributes = {
 					97F14FE41CB9EEB20065EE08 = {
 						CreatedOnToolsVersion = 7.3;
@@ -138,6 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				97F14FEB1CB9EEB20065EE08 /* ViewController.swift in Sources */,
+				A29213D11DA21E6500335E1C /* WeatherIcon.swift in Sources */,
+				A29213CE1DA21D1F00335E1C /* CurrentWeather.swift in Sources */,
 				97F14FE91CB9EEB20065EE08 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
