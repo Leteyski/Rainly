@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    private let forecastAPIKey = "be76ceb070951d187c7a1cb87737badb"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,10 @@ class ViewController: UIViewController {
         let icon = WeatherIcon.Rain.image
         let currentWeather = CurrentWeather(temperature: 56.0, humidity: 0.8, precipProbability: 1.0, summary: "Wet and rainy!", icon: icon)
         display(currentWeather)
+        
+        
+        // https://api.darksky.net/forecast/be76ceb070951d187c7a1cb87737badb/37.8267,-122.4233
+
         
     }
 
