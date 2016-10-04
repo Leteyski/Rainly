@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442287371DA40D0B0089E6D7 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 442287351DA40D0B0089E6D7 /* CoreDataModel.xcdatamodeld */; };
 		44A5C3AC1DA2B42600AC9F32 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A5C3AB1DA2B42600AC9F32 /* APIClient.swift */; };
 		44A5C3AE1DA2C1D400AC9F32 /* ForecastClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A5C3AD1DA2C1D400AC9F32 /* ForecastClient.swift */; };
 		97F14FE91CB9EEB20065EE08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F14FE81CB9EEB20065EE08 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		442287361DA40D0B0089E6D7 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		44A5C3AB1DA2B42600AC9F32 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		44A5C3AD1DA2C1D400AC9F32 /* ForecastClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastClient.swift; sourceTree = "<group>"; };
 		97F14FE51CB9EEB20065EE08 /* Rainly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainly.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 				97F14FF41CB9EEB20065EE08 /* Info.plist */,
 				44A5C3AB1DA2B42600AC9F32 /* APIClient.swift */,
 				44A5C3AD1DA2C1D400AC9F32 /* ForecastClient.swift */,
+				442287351DA40D0B0089E6D7 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = Rainly;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				A29213CE1DA21D1F00335E1C /* CurrentWeather.swift in Sources */,
 				44A5C3AE1DA2C1D400AC9F32 /* ForecastClient.swift in Sources */,
 				44A5C3AC1DA2B42600AC9F32 /* APIClient.swift in Sources */,
+				442287371DA40D0B0089E6D7 /* CoreDataModel.xcdatamodeld in Sources */,
 				97F14FE91CB9EEB20065EE08 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +323,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		442287351DA40D0B0089E6D7 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				442287361DA40D0B0089E6D7 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 442287361DA40D0B0089E6D7 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 97F14FDD1CB9EEB20065EE08 /* Project object */;
 }
