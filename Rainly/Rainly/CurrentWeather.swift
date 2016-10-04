@@ -24,6 +24,7 @@ extension CurrentWeather {
 }
 
 extension CurrentWeather: JSONDecodable {
+        
     init?(JSON: [String: AnyObject]) {
         guard let temperature = JSON["temperature"] as? Double,
         let humidity = JSON["humidity"] as? Double,
