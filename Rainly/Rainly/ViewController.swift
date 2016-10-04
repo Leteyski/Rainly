@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import MapKit
+
 
 extension CurrentWeather {
     var temperatureString: String {
@@ -34,7 +36,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var currentSummaryLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var locationLabel: UILabel!
     
     let forecastAPIClient = ForecastAPIClient(APIKey: "be76ceb070951d187c7a1cb87737badb")
     var coordinate = Coordinate(latitude: 0, longtitude: 0)
@@ -44,20 +46,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       
-        if (CLLocationManager.locationServicesEnabled())
-        {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
+        getUserLocation()
         }
-        
-        //TODO: Wrapup in a function & call when refresh
-        //TODO: Show the correct location label
-       
-}
  
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +95,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBAction func refreshWeather(sender: AnyObject) {
         toggleRefreshAnimation(true)
-        fetchCurrentWeather()
+        getUserLocation()
     }
     
     func toggleRefreshAnimation(on: Bool) {
@@ -118,13 +108,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func getUserLocation() {
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let location = locations.last! as CLLocation
+        let geoCoder = CLGeocoder()
         
         coordinate.latitude = location.coordinate.latitude
         coordinate.longtitude = location.coordinate.longitude
         
         print("Coordinates Changed to \(coordinate.latitude),\(coordinate.longtitude) :)")
+        
+        geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+            
+            var placeMark: CLPlacemark!
+            placeMark = placemarks?[0]
+            
+            if let city = placeMark.addressDictionary!["City"] as? NSString {
+                print("YOURCITYIS: \(city)")
+                self.locationLabel.text = city as String
+            }
+            
+        }
         
         locationManager.stopUpdatingLocation()
         

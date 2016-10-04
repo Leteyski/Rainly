@@ -70,7 +70,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Paris, Ile-de-France" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWE-Ux-OIG">
                                 <frame key="frameInset" minX="263" minY="129" width="142" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -111,6 +111,7 @@
                         <outlet property="currentSummaryLabel" destination="Ulr-Ky-JFs" id="SXs-0O-5id"/>
                         <outlet property="currentTemperatureLabel" destination="NZV-b0-F2i" id="8xY-Vn-rY3"/>
                         <outlet property="currentWeatherIcon" destination="CGP-vZ-oD8" id="UNy-r5-hNh"/>
+                        <outlet property="locationLabel" destination="eWE-Ux-OIG" id="jlI-ST-Kow"/>
                         <outlet property="refreshButton" destination="OZe-cj-oOs" id="JeC-y1-UkG"/>
                     </connections>
                 </viewController>
