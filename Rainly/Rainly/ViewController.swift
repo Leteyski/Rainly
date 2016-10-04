@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MapKit
+import CoreLocation
 
 extension CurrentWeather {
     var temperatureString: String {
@@ -25,7 +25,7 @@ extension CurrentWeather {
     }
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var currentTemperatureLabel: UILabel!
     @IBOutlet weak var currentHumidityLabel: UILabel!
@@ -37,14 +37,26 @@ class ViewController: UIViewController {
     
     
     let forecastAPIClient = ForecastAPIClient(APIKey: "be76ceb070951d187c7a1cb87737badb")
-    var coordinate = Coordinate(latitude: 48.869883, longtitude: 2.395010)
+    var coordinate = Coordinate(latitude: 0, longtitude: 0)
     var locationManager: CLLocationManager!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        fetchCurrentWeather()
+       
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        
+        //TODO: Wrapup in a function & call when refresh
+        //TODO: Show the correct location label
+       
 }
  
 
@@ -106,7 +118,18 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last! as CLLocation
+        
+        coordinate.latitude = location.coordinate.latitude
+        coordinate.longtitude = location.coordinate.longitude
+        
+        print("Coordinates Changed to \(coordinate.latitude),\(coordinate.longtitude) :)")
+        
+        locationManager.stopUpdatingLocation()
+        
+        fetchCurrentWeather()
+    }
 
     }
 
