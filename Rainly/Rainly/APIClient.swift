@@ -21,6 +21,16 @@ enum APIResult<T> {
     case Failure(ErrorType)
 }
 
+protocol JSONDecodable {
+    init?(JSON: [String:AnyObject])
+}
+
+protocol Endpoint {
+    var baseURL: NSURL { get }
+    var path: String { get }
+    var request: NSURLRequest { get }
+}
+
 protocol APIClient {
     var configuration: NSURLSessionConfiguration { get }
     var session: NSURLSession { get }
@@ -28,7 +38,7 @@ protocol APIClient {
     init(config: NSURLSessionConfiguration)
     
     func JSONTaskWithRequest(request: NSURLRequest, completion: JSONTaskCompletion) -> JSONTask
-    func fetch<T>(request: NSURLRequest, parse: JSON -> T?, completion: APIResult<T> -> Void)
+    func fetch<T: JSONDecodable>(request: NSURLRequest, parse: JSON -> T?, completion: APIResult<T> -> Void)
     
 }
 
@@ -75,22 +85,26 @@ extension APIClient {
     func fetch<T>(request: NSURLRequest, parse: JSON -> T?, completion: APIResult<T> -> Void) {
         let task = JSONTaskWithRequest(request) { json, response, error in
         
-            guard let json = json else {
-                if let error = error {
-                    completion(.Failure(error))
-                } else {
-                   // TODO: Fix this :)
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                guard let json = json else {
+                    if let error = error {
+                        completion(.Failure(error))
+                    } else {
+                        // TODO: Fix this :)
+                    }
+                    return
                 }
-                return
+                
+                if let value = parse(json) {
+                    completion(.Success(value))
+                } else {
+                    let error = NSError(domain: LETNetworkingErrorDomain, code: UnexpectedResponseError, userInfo: nil)
+                    completion(.Failure(error))
+                }
+                
+
             }
-            
-            if let value = parse(json) {
-                completion(.Success(value))
-            } else {
-                let error = NSError(domain: LETNetworkingErrorDomain, code: UnexpectedResponseError, userInfo: nil)
-                completion(.Failure(error))
-            }
-        
         }
    
         task.resume()

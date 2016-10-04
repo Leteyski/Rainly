@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 extension CurrentWeather {
     var temperatureString: String {
@@ -34,28 +35,44 @@ class ViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private let forecastAPIKey = "be76ceb070951d187c7a1cb87737badb"
+    
+    let forecastAPIClient = ForecastAPIClient(APIKey: "be76ceb070951d187c7a1cb87737badb")
+    var coordinate = Coordinate(latitude: 48.869883, longtitude: 2.395010)
+    var locationManager: CLLocationManager!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        let icon = WeatherIcon.Rain.image
-        let currentWeather = CurrentWeather(temperature: 56.0, humidity: 0.8, precipProbability: 1.0, summary: "Wet and rainy!", icon: icon)
-        display(currentWeather)
-        
-        
-        // https://api.darksky.net/forecast/be76ceb070951d187c7a1cb87737badb/37.8267,-122.4233
-
-        
-    }
+        fetchCurrentWeather()
+}
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
+    func fetchCurrentWeather() {
+        forecastAPIClient.fetchCurrentWeather(coordinate) { result in
+            
+            self.toggleRefreshAnimation(false)
+            
+            switch result {
+                
+            case .Success(let currentWeather):
+                self.display(currentWeather)
+                
+            case .Failure(let error as NSError):
+                self.showAlert("Unable to retreive forecast!", message: error.localizedDescription)
+                
+            default: break
+                
+            }
+        }
+    }
+    
     func display(weather: CurrentWeather) {
         currentTemperatureLabel.text = weather.temperatureString
         currentHumidityLabel.text = weather.humidityString
@@ -63,6 +80,35 @@ class ViewController: UIViewController {
         currentSummaryLabel.text = weather.summary
         currentWeatherIcon.image = weather.icon
     }
+    
+    func showAlert(title: String, message: String?, style: UIAlertControllerStyle = .Alert) {
+        let alertControler = UIAlertController(title: title, message: message, preferredStyle: style)
+        let dismissAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        
+        alertControler.addAction(dismissAction)
+        
+        presentViewController(alertControler, animated: true, completion: nil)
+        
+    }
 
-}
+    @IBAction func refreshWeather(sender: AnyObject) {
+        toggleRefreshAnimation(true)
+        fetchCurrentWeather()
+    }
+    
+    func toggleRefreshAnimation(on: Bool) {
+        refreshButton.hidden = on
+        
+        if on {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+    }
+    
+    
+
+    }
+
+
 
