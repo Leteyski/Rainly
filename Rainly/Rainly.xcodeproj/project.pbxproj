@@ -17,6 +17,10 @@
 		97F14FF31CB9EEB20065EE08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F14FF11CB9EEB20065EE08 /* LaunchScreen.storyboard */; };
 		A29213CE1DA21D1F00335E1C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213CD1DA21D1F00335E1C /* CurrentWeather.swift */; };
 		A29213D11DA21E6500335E1C /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213D01DA21E6500335E1C /* WeatherIcon.swift */; };
+		A29213D61DA43E8A00335E1C /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213D21DA43E8A00335E1C /* Location+CoreDataClass.swift */; };
+		A29213D71DA43E8A00335E1C /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213D31DA43E8A00335E1C /* Location+CoreDataProperties.swift */; };
+		A29213D81DA43E8A00335E1C /* CurrentWeather+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213D41DA43E8A00335E1C /* CurrentWeather+CoreDataClass.swift */; };
+		A29213D91DA43E8A00335E1C /* CurrentWeather+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29213D51DA43E8A00335E1C /* CurrentWeather+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		97F14FF41CB9EEB20065EE08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A29213CD1DA21D1F00335E1C /* CurrentWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		A29213D01DA21E6500335E1C /* WeatherIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherIcon.swift; sourceTree = "<group>"; };
+		A29213D21DA43E8A00335E1C /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A29213D31DA43E8A00335E1C /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A29213D41DA43E8A00335E1C /* CurrentWeather+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentWeather+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A29213D51DA43E8A00335E1C /* CurrentWeather+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentWeather+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +56,10 @@
 		97F14FDC1CB9EEB20065EE08 = {
 			isa = PBXGroup;
 			children = (
+				A29213D21DA43E8A00335E1C /* Location+CoreDataClass.swift */,
+				A29213D31DA43E8A00335E1C /* Location+CoreDataProperties.swift */,
+				A29213D41DA43E8A00335E1C /* CurrentWeather+CoreDataClass.swift */,
+				A29213D51DA43E8A00335E1C /* CurrentWeather+CoreDataProperties.swift */,
 				97F14FE71CB9EEB20065EE08 /* Rainly */,
 				97F14FE61CB9EEB20065EE08 /* Products */,
 			);
@@ -160,11 +172,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29213D81DA43E8A00335E1C /* CurrentWeather+CoreDataClass.swift in Sources */,
 				97F14FEB1CB9EEB20065EE08 /* ViewController.swift in Sources */,
 				A29213D11DA21E6500335E1C /* WeatherIcon.swift in Sources */,
 				A29213CE1DA21D1F00335E1C /* CurrentWeather.swift in Sources */,
 				44A5C3AE1DA2C1D400AC9F32 /* ForecastClient.swift in Sources */,
+				A29213D61DA43E8A00335E1C /* Location+CoreDataClass.swift in Sources */,
+				A29213D71DA43E8A00335E1C /* Location+CoreDataProperties.swift in Sources */,
 				44A5C3AC1DA2B42600AC9F32 /* APIClient.swift in Sources */,
+				A29213D91DA43E8A00335E1C /* CurrentWeather+CoreDataProperties.swift in Sources */,
 				442287371DA40D0B0089E6D7 /* CoreDataModel.xcdatamodeld in Sources */,
 				97F14FE91CB9EEB20065EE08 /* AppDelegate.swift in Sources */,
 			);
